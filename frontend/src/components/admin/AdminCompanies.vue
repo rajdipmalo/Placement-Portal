@@ -152,7 +152,7 @@ export default {
 
     async fetchCompanies() {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/companies", this.getAuthHeader());
+        const res = await axios.get(`${API_URL}/api/admin/companies`, this.getAuthHeader());
         this.companies = res.data;
       } catch (err) {
         console.error('Failed to fetch companies:', err);
@@ -162,7 +162,7 @@ export default {
     async approveCompany(id) {
       if (confirm('Approve this company?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/companies/${id}/approve`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/companies/${id}/approve`, {}, this.getAuthHeader());
           await this.fetchCompanies();
           alert('Company approved successfully');
         } catch (err) {
@@ -174,7 +174,7 @@ export default {
     async rejectCompany(id) {
       if (confirm('Reject this company?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/companies/${id}/reject`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/companies/${id}/reject`, {}, this.getAuthHeader());
           await this.fetchCompanies();
           alert('Company rejected');
         } catch (err) {
@@ -188,9 +188,9 @@ export default {
       if (confirm(`Are you sure you want to ${action} blacklist?`)) {
         try {
           if (company.is_blacklisted) {
-            await axios.put(`http://127.0.0.1:5000/api/admin/companies/${company.id}/unblacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/companies/${company.id}/unblacklist`, {}, this.getAuthHeader());
           } else {
-            await axios.put(`http://127.0.0.1:5000/api/admin/companies/${company.id}/blacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/companies/${company.id}/blacklist`, {}, this.getAuthHeader());
           }
           await this.fetchCompanies();
           alert(`Company ${company.is_blacklisted ? 'removed from' : 'added to'} blacklist`);

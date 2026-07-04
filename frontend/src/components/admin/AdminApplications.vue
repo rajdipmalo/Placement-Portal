@@ -143,7 +143,7 @@ export default {
 
     async fetchApplications() {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/applications", this.getAuthHeader());
+        const res = await axios.get(`${API_URL}/api/admin/applications`, this.getAuthHeader());
         this.applications = res.data;
       } catch (err) {
         console.error('Failed to fetch applications:', err);
@@ -152,7 +152,7 @@ export default {
 
     async fetchCompanies() {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/companies?status=approved", this.getAuthHeader());
+        const res = await axios.get(`${API_URL}/api/admin/companies?status=approved`, this.getAuthHeader());
         this.companies = res.data;
       } catch (err) {
         console.error('Failed to fetch companies:', err);

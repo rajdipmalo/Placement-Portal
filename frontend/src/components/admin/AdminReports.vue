@@ -259,7 +259,7 @@ export default {
           to: this.dateRange.to
         };
 
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/reports/statistics", { 
+        const res = await axios.get(`${API_URL}/api/admin/reports/statistics`, { 
           ...this.getAuthHeader(),
           params 
         });

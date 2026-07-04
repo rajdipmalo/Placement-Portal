@@ -191,10 +191,10 @@ export default {
     async fetchDashboardData() {
       try {
         const [statsRes, companiesRes, drivesRes, appsRes] = await Promise.all([
-          axios.get("http://127.0.0.1:5000/api/admin/dashboard", this.getAuthHeader()),
-          axios.get("http://127.0.0.1:5000/api/admin/companies?status=pending", this.getAuthHeader()),
-          axios.get("http://127.0.0.1:5000/api/admin/drives?status=pending", this.getAuthHeader()),
-          axios.get("http://127.0.0.1:5000/api/admin/applications?limit=5", this.getAuthHeader())
+          axios.get(`${API_URL}/api/admin/dashboard`, this.getAuthHeader()),
+          axios.get(`${API_URL}/api/admin/companies?status=pending`, this.getAuthHeader()),
+          axios.get(`${API_URL}/api/admin/drives?status=pending`, this.getAuthHeader()),
+          axios.get(`${API_URL}/api/admin/applications?limit=5`, this.getAuthHeader())
         ]);
 
         this.stats = [
@@ -215,7 +215,7 @@ export default {
     async approveCompany(id) {
       if (confirm('Approve this company?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/companies/${id}/approve`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/companies/${id}/approve`, {}, this.getAuthHeader());
           this.pendingCompanies = this.pendingCompanies.filter(c => c.id !== id);
           alert('Company approved successfully');
         } catch (err) {
@@ -227,7 +227,7 @@ export default {
     async rejectCompany(id) {
       if (confirm('Reject this company?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/companies/${id}/reject`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/companies/${id}/reject`, {}, this.getAuthHeader());
           this.pendingCompanies = this.pendingCompanies.filter(c => c.id !== id);
           alert('Company rejected');
         } catch (err) {
@@ -239,7 +239,7 @@ export default {
     async approveDrive(id) {
       if (confirm('Approve this drive?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/drives/${id}/approve`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/drives/${id}/approve`, {}, this.getAuthHeader());
           this.pendingDrives = this.pendingDrives.filter(d => d.id !== id);
           alert('Drive approved successfully');
         } catch (err) {
@@ -251,7 +251,7 @@ export default {
     async rejectDrive(id) {
       if (confirm('Reject this drive?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/drives/${id}/reject`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/drives/${id}/reject`, {}, this.getAuthHeader());
           this.pendingDrives = this.pendingDrives.filter(d => d.id !== id);
           alert('Drive rejected');
         } catch (err) {

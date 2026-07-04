@@ -157,7 +157,7 @@ export default {
 
     async fetchStudents() {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/students", this.getAuthHeader());
+        const res = await axios.get(`${API_URL}/api/admin/students`, this.getAuthHeader());
         this.students = res.data;
       } catch (err) {
         console.error('Failed to fetch students:', err);
@@ -169,9 +169,9 @@ export default {
       if (confirm(`Are you sure you want to ${action} blacklist?`)) {
         try {
           if (student.is_blacklisted) {
-            await axios.put(`http://127.0.0.1:5000/api/admin/students/${student.id}/unblacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/students/${student.id}/unblacklist`, {}, this.getAuthHeader());
           } else {
-            await axios.put(`http://127.0.0.1:5000/api/admin/students/${student.id}/blacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/students/${student.id}/blacklist`, {}, this.getAuthHeader());
           }
           await this.fetchStudents();
           alert(`Student ${student.is_blacklisted ? 'removed from' : 'added to'} blacklist`);

@@ -269,7 +269,7 @@ export default {
 
       try {
         const res = await axios.get(
-          `http://127.0.0.1:5000/api/admin/students/${this.studentId}`,
+          `${API_URL}/api/admin/students/${this.studentId}`,
           this.getAuthHeader()
         );
         this.student = res.data;
@@ -285,9 +285,9 @@ export default {
       if (confirm(`Are you sure you want to ${action} blacklist?`)) {
         try {
           if (this.student.is_blacklisted) {
-            await axios.put(`http://127.0.0.1:5000/api/admin/students/${this.studentId}/unblacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/students/${this.studentId}/unblacklist`, {}, this.getAuthHeader());
           } else {
-            await axios.put(`http://127.0.0.1:5000/api/admin/students/${this.studentId}/blacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/students/${this.studentId}/blacklist`, {}, this.getAuthHeader());
           }
           await this.fetchStudentDetails();
           alert(`Student ${this.student.is_blacklisted ? 'removed from' : 'added to'} blacklist`);

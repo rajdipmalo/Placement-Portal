@@ -151,7 +151,7 @@ export default {
 
     async fetchDrives() {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/drives", this.getAuthHeader());
+        const res = await axios.get(`${API_URL}/api/admin/drives`, this.getAuthHeader());
         this.drives = res.data;
       } catch (err) {
         console.error('Failed to fetch drives:', err);
@@ -160,7 +160,7 @@ export default {
 
     async fetchCompanies() {
       try {
-        const res = await axios.get("http://127.0.0.1:5000/api/admin/companies?status=approved", this.getAuthHeader());
+        const res = await axios.get(`${API_URL}/api/admin/companies?status=approved`, this.getAuthHeader());
         this.companies = res.data;
       } catch (err) {
         console.error('Failed to fetch companies:', err);
@@ -170,7 +170,7 @@ export default {
     async approveDrive(id) {
       if (confirm('Approve this drive?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/drives/${id}/approve`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/drives/${id}/approve`, {}, this.getAuthHeader());
           await this.fetchDrives();
           alert('Drive approved successfully');
         } catch (err) {
@@ -182,7 +182,7 @@ export default {
     async rejectDrive(id) {
       if (confirm('Reject this drive?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/drives/${id}/reject`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/drives/${id}/reject`, {}, this.getAuthHeader());
           await this.fetchDrives();
           alert('Drive rejected');
         } catch (err) {

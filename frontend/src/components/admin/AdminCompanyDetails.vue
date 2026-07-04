@@ -256,7 +256,7 @@ export default {
 
       try {
         const res = await axios.get(
-          `http://127.0.0.1:5000/api/admin/companies/${this.companyId}`,
+          `${API_URL}/api/admin/companies/${this.companyId}`,
           this.getAuthHeader()
         );
         this.company = res.data;
@@ -270,7 +270,7 @@ export default {
     async approveCompany() {
       if (confirm('Approve this company?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/companies/${this.companyId}/approve`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/companies/${this.companyId}/approve`, {}, this.getAuthHeader());
           await this.fetchCompanyDetails();
           alert('Company approved successfully');
         } catch (err) {
@@ -282,7 +282,7 @@ export default {
     async rejectCompany() {
       if (confirm('Reject this company?')) {
         try {
-          await axios.put(`http://127.0.0.1:5000/api/admin/companies/${this.companyId}/reject`, {}, this.getAuthHeader());
+          await axios.put(`${API_URL}/api/admin/companies/${this.companyId}/reject`, {}, this.getAuthHeader());
           await this.fetchCompanyDetails();
           alert('Company rejected');
         } catch (err) {
@@ -296,9 +296,9 @@ export default {
       if (confirm(`Are you sure you want to ${action} blacklist?`)) {
         try {
           if (this.company.is_blacklisted) {
-            await axios.put(`http://127.0.0.1:5000/api/admin/companies/${this.companyId}/unblacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/companies/${this.companyId}/unblacklist`, {}, this.getAuthHeader());
           } else {
-            await axios.put(`http://127.0.0.1:5000/api/admin/companies/${this.companyId}/blacklist`, {}, this.getAuthHeader());
+            await axios.put(`${API_URL}/api/admin/companies/${this.companyId}/blacklist`, {}, this.getAuthHeader());
           }
           await this.fetchCompanyDetails();
           alert(`Company ${this.company.is_blacklisted ? 'removed from' : 'added to'} blacklist`);

@@ -168,6 +168,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 import { useRouter } from 'vue-router';
 
 export default {
@@ -237,7 +238,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/dashboard",
+          `${API_URL}/api/company/dashboard`,
           this.getAuthHeader()
         );
 
@@ -287,7 +288,7 @@ export default {
       if (confirm(`Are you sure you want to mark drive "${drive.role}" as complete?`)) {
         try {
           await axios.post(
-            `http://127.0.0.1:5000/api/company/jobs/${drive.id}/complete`,
+            `${API_URL}/api/company/jobs/${drive.id}/complete`,
             {},
             this.getAuthHeader()
           );
@@ -305,7 +306,7 @@ export default {
       if (confirm(`Are you sure you want to reopen drive "${drive.role}"?`)) {
         try {
           await axios.post(
-            `http://127.0.0.1:5000/api/company/jobs/${drive.id}/reopen`,
+            `${API_URL}/api/company/jobs/${drive.id}/reopen`,
             {},
             this.getAuthHeader()
           );
@@ -323,7 +324,7 @@ export default {
       if (confirm(`Are you sure you want to delete drive "${drive.role}"?`)) {
         try {
           await axios.delete(
-            `http://127.0.0.1:5000/api/company/jobs/${drive.id}`,
+            `${API_URL}/api/company/jobs/${drive.id}`,
             this.getAuthHeader()
           );
           

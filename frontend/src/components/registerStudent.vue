@@ -232,6 +232,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   data() {
@@ -328,7 +329,7 @@ export default {
         };
 
         const response = await axios.post(
-          "http://127.0.0.1:5000/api/auth/register/student",
+          `${API_URL}/api/auth/register/student`,
           payload
         );
 
@@ -349,7 +350,7 @@ export default {
 
       try {
         await axios.post(
-          "http://127.0.0.1:5000/api/auth/resend-verification",
+          `${API_URL}/api/auth/resend-verification`,
           { email: this.registeredEmail }
         );
 

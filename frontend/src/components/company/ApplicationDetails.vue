@@ -403,6 +403,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 import { useRouter } from 'vue-router';
 
 export default {
@@ -489,7 +490,7 @@ export default {
       try {
         // Fetch application details
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/applications",
+          `${API_URL}/api/company/applications`,
           this.getAuthHeader()
         );
 
@@ -508,7 +509,7 @@ export default {
         if (application.application_status === 'selected') {
           try {
             const placementsRes = await axios.get(
-              "http://127.0.0.1:5000/api/company/placements",
+              `${API_URL}/api/company/placements`,
               this.getAuthHeader()
             );
             
@@ -581,7 +582,7 @@ export default {
 
       try {
         await axios.put(
-          `http://127.0.0.1:5000/api/company/applications/${this.application.application_id}/status`,
+          `${API_URL}/api/company/applications/${this.application.application_id}/status`,
           { status },
           this.getAuthHeader()
         );
@@ -651,7 +652,7 @@ export default {
         }
 
         await axios.post(
-          `http://127.0.0.1:5000/api/company/applications/${this.application.application_id}/schedule-interview`,
+          `${API_URL}/api/company/applications/${this.application.application_id}/schedule-interview`,
           payload,
           this.getAuthHeader()
         );
@@ -687,7 +688,7 @@ export default {
 
         // Update existing placement using the new PUT endpoint
         await axios.put(
-          `http://127.0.0.1:5000/api/company/placements/${this.placementId}`,
+          `${API_URL}/api/company/placements/${this.placementId}`,
           payload,
           this.getAuthHeader()
         );

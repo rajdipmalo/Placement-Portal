@@ -83,6 +83,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   data() {
@@ -119,7 +120,7 @@ export default {
 
       try {
         const response = await axios.get(
-          `http://127.0.0.1:5000/api/auth/verify-email/${token}`
+          `${API_URL}/api/auth/verify-email/${token}`
         );
 
         // ✅ Email verified successfully

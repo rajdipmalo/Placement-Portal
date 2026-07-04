@@ -181,6 +181,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'ProfilePage',
@@ -291,7 +292,7 @@ export default {
 
     try {
       const res = await axios.get(
-        "http://127.0.0.1:5000/api/student/profile",
+        `${API_URL}/api/student/profile`,
         this.getAuthHeader()
       );
 
@@ -348,7 +349,7 @@ export default {
       console.log('Sending payload:', payload); // For debugging
 
       await axios.put(
-        "http://127.0.0.1:5000/api/student/profile",
+        `${API_URL}/api/student/profile`,
         payload,
         this.getAuthHeader()
       );

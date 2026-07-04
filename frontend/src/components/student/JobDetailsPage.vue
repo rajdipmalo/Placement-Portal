@@ -317,6 +317,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'JobDetailsPage',
@@ -385,7 +386,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/jobs",
+          `${API_URL}/api/student/jobs`,
           this.getAuthHeader()
         );
 
@@ -435,7 +436,7 @@ export default {
     async fetchAppliedJobs() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/applied-jobs",
+          `${API_URL}/api/student/applied-jobs`,
           this.getAuthHeader()
         );
         
@@ -456,7 +457,7 @@ export default {
     async fetchPlacements() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/placements",
+          `${API_URL}/api/student/placements`,
           this.getAuthHeader()
         );
         this.placementsData = res.data;
@@ -516,7 +517,7 @@ export default {
     async fetchUserProfile() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/profile",
+          `${API_URL}/api/student/profile`,
           this.getAuthHeader()
         );
         this.userProfile = res.data;
@@ -614,7 +615,7 @@ export default {
 
       try {
         await axios.post(
-          `http://127.0.0.1:5000/api/student/apply/${this.job.id}`,
+          `${API_URL}/api/student/apply/${this.job.id}`,
           {},
           this.getAuthHeader()
         );

@@ -233,6 +233,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 import { useRouter } from 'vue-router';
 
 export default {
@@ -329,7 +330,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/applications",
+          `${API_URL}/api/company/applications`,
           this.getAuthHeader()
         );
 
@@ -345,7 +346,7 @@ export default {
     async fetchJobs() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/dashboard",
+          `${API_URL}/api/company/dashboard`,
           this.getAuthHeader()
         );
         this.jobs = res.data.jobs || [];
@@ -436,7 +437,7 @@ export default {
 
       try {
         await axios.put(
-          `http://127.0.0.1:5000/api/company/applications/${app.application_id}/status`,
+          `${API_URL}/api/company/applications/${app.application_id}/status`,
           { status },
           this.getAuthHeader()
         );
@@ -474,7 +475,7 @@ export default {
         for (const appId of this.selectedApps) {
           try {
             await axios.put(
-              `http://127.0.0.1:5000/api/company/applications/${appId}/status`,
+              `${API_URL}/api/company/applications/${appId}/status`,
               { status: targetStatus },
               this.getAuthHeader()
             );

@@ -178,6 +178,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'CompanyProfile',
@@ -251,7 +252,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/profile",
+          `${API_URL}/api/company/profile`,
           this.getAuthHeader()
         );
 
@@ -286,7 +287,7 @@ export default {
 
       try {
         await axios.put(
-          "http://127.0.0.1:5000/api/company/profile",
+          `${API_URL}/api/company/profile`,
           this.form,
           this.getAuthHeader()
         );

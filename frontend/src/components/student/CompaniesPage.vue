@@ -92,6 +92,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'CompaniesPage',
@@ -136,7 +137,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/companies",
+          `${API_URL}/api/student/companies`,
           this.getAuthHeader()
         );
 
@@ -152,7 +153,7 @@ export default {
     async fetchUserProfile() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/profile",
+          `${API_URL}/api/student/profile`,
           this.getAuthHeader()
         );
         this.userProfile = res.data;

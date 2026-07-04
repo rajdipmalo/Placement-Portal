@@ -184,6 +184,7 @@
 <script>
 import axios from "axios";
 import { Chart, registerables } from 'chart.js';
+import { API_URL } from "@/config";
 Chart.register(...registerables);
 
 export default {

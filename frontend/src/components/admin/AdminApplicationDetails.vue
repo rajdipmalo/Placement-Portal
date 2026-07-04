@@ -296,6 +296,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'AdminApplicationDetails',
@@ -343,7 +344,7 @@ export default {
 
       try {
         const res = await axios.get(
-          `http://127.0.0.1:5000/api/admin/applications/${this.applicationId}`,
+          `${API_URL}/api/admin/applications/${this.applicationId}`,
           this.getAuthHeader()
         );
         this.application = res.data;

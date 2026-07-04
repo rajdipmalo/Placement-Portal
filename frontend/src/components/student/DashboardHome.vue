@@ -112,6 +112,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'DashboardHome',
@@ -149,7 +150,7 @@ export default {
     async fetchUserProfile() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/profile",
+          `${API_URL}/api/student/profile`,
           this.getAuthHeader()
         );
         
@@ -168,7 +169,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/applied-jobs",
+          `${API_URL}/api/student/applied-jobs`,
           this.getAuthHeader()
         );
 

@@ -290,6 +290,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 import { useRouter } from 'vue-router';
 
 export default {
@@ -350,7 +351,7 @@ export default {
 
       try {
         const res = await axios.get(
-          `http://127.0.0.1:5000/api/company/jobs/${this.driveId}`,
+          `${API_URL}/api/company/jobs/${this.driveId}`,
           this.getAuthHeader()
         );
 
@@ -441,7 +442,7 @@ export default {
       if (confirm(`Are you sure you want to mark drive "${this.drive.role}" as complete?`)) {
         try {
           await axios.post(
-            `http://127.0.0.1:5000/api/company/jobs/${this.drive.id}/complete`,
+            `${API_URL}/api/company/jobs/${this.drive.id}/complete`,
             {},
             this.getAuthHeader()
           );
@@ -459,7 +460,7 @@ export default {
       if (confirm(`Are you sure you want to reopen drive "${this.drive.role}"?`)) {
         try {
           await axios.post(
-            `http://127.0.0.1:5000/api/company/jobs/${this.drive.id}/reopen`,
+            `${API_URL}/api/company/jobs/${this.drive.id}/reopen`,
             {},
             this.getAuthHeader()
           );
@@ -477,7 +478,7 @@ export default {
       if (confirm(`Are you sure you want to delete drive "${this.drive.role}"?`)) {
         try {
           await axios.delete(
-            `http://127.0.0.1:5000/api/company/jobs/${this.drive.id}`,
+            `${API_URL}/api/company/jobs/${this.drive.id}`,
             this.getAuthHeader()
           );
           

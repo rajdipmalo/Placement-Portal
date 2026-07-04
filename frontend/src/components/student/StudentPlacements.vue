@@ -125,6 +125,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'StudentPlacements',
@@ -153,7 +154,7 @@ export default {
 
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/student/placements",
+          `${API_URL}/api/student/placements`,
           this.getAuthHeader()
         );
         this.placements = res.data;

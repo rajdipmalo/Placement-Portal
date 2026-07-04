@@ -223,6 +223,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 
 export default {
   name: 'CreateDrive',
@@ -410,14 +411,14 @@ export default {
 
         if (this.isEditing) {
           await axios.put(
-            `http://127.0.0.1:5000/api/company/jobs/${this.editingId}`,
+            `${API_URL}/api/company/jobs/${this.editingId}`,
             payload,
             this.getAuthHeader()
           );
           alert("Drive updated successfully!");
         } else {
           await axios.post(
-            "http://127.0.0.1:5000/api/company/jobs",
+            `${API_URL}/api/company/jobs`,
             payload,
             this.getAuthHeader()
           );

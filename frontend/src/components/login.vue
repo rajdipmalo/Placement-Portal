@@ -124,6 +124,7 @@
 
 <script>
 import axios from "axios"
+import { API_URL } from "@/config";
 
 export default {
   data() {
@@ -151,7 +152,7 @@ export default {
 
       try {
         const res = await axios.post(
-          "http://127.0.0.1:5000/api/auth/login",
+          `${API_URL}/api/auth/login`,
           {
             email: this.email,
             password: this.password
@@ -190,7 +191,7 @@ export default {
 
       try {
         await axios.post(
-          "http://127.0.0.1:5000/api/auth/resend-verification",
+          `${API_URL}/api/auth/resend-verification`,
           { email: this.unverifiedEmail }
         );
 

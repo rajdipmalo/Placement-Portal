@@ -137,6 +137,7 @@
 
 <script>
 import axios from "axios";
+import { API_URL } from "@/config";
 import { useRouter } from 'vue-router';
 
 export default {
@@ -180,7 +181,7 @@ export default {
     async fetchDashboardData() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/dashboard",
+          `${API_URL}/api/company/dashboard`,
           this.getAuthHeader()
         );
         
@@ -199,7 +200,7 @@ export default {
     async fetchStatistics() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/statistics",
+          `${API_URL}/api/company/statistics`,
           this.getAuthHeader()
         );
         
@@ -240,7 +241,7 @@ export default {
     async fetchRecentApplications() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/applications",
+          `${API_URL}/api/company/applications`,
           this.getAuthHeader()
         );
         
@@ -254,7 +255,7 @@ export default {
     async fetchActiveDrives() {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:5000/api/company/dashboard",
+          `${API_URL}/api/company/dashboard`,
           this.getAuthHeader()
         );
         

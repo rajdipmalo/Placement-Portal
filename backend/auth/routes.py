@@ -2,7 +2,7 @@
 Authentication Routes - with Email Verification
 Location: auth/routes.py
 """
-
+import os
 from flask import Blueprint, request, jsonify, url_for, redirect
 from flask_jwt_extended import create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -60,7 +60,7 @@ def register_student():
         db.session.commit()
 
 
-        verification_link = f"http://localhost:5173/verify-email/{verification_token}"
+        verification_link = f"{os.getenv('FRONTEND_URL')}/verify-email/{verification_token}"
 
         send_verification_email(
             user_email=data['email'],
@@ -116,7 +116,7 @@ def register_company():
         db.session.commit()
 
 
-        verification_link = f"http://localhost:5173/verify-email/{verification_token}"
+        verification_link = f"{os.getenv('FRONTEND_URL')}/verify-email/{verification_token}"
 
         send_verification_email(
             user_email=data['email'],

@@ -11,10 +11,10 @@ load_dotenv()
 
 from models import db, User
 from config import Config
-from extensions import cache
+from extensions import mail, cache
 
 jwt = JWTManager()
-mail = Mail()  
+
 
 
 def create_app():

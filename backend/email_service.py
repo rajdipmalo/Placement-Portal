@@ -1,8 +1,7 @@
-from flask_mail import Mail, Message
+from flask_mail import Message
+from extensions import mail
 from itsdangerous import URLSafeTimedSerializer
 from flask import current_app
-
-mail = Mail()
 
 
 # ==================== VERIFICATION EMAIL ====================

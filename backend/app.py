@@ -28,7 +28,13 @@ def create_app():
 
 
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        "connect_args": {"sslmode": "require"}
+        "pool_pre_ping": True,
+        "pool_recycle": 300,
+        "pool_size": 5,
+        "max_overflow": 10,
+        "connect_args": {
+            "sslmode": "require"
+        }
     }
 
     db.init_app(app)

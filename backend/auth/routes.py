@@ -74,7 +74,8 @@ def register_student():
 
     except Exception as e:
         db.session.rollback()
-        return jsonify({"msg": str(e)}), 400
+        print(f"REGISTER ERROR: {e}")
+        return jsonify({"msg": str(e)}), 500
 
 
 

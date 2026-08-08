@@ -23,14 +23,18 @@ def create_app():
     app.config.from_object(Config)
     
     CORS(
-        app,
-        resources={r"/api/*": {"origins": [
-            "https://placement-portal-nine-fawn.vercel.app"
-        ]}},
-        methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        allow_headers=["Content-Type", "Authorization"],
-        supports_credentials=True
-    )
+            app,
+            resources={
+                r"/api/*": {
+                    "origins": [
+                        "https://placement-portal-nine-fawn.vercel.app"
+                    ]
+                }
+            },
+            methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+            allow_headers=["Content-Type", "Authorization"],
+            supports_credentials=True
+        )
 
 
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {

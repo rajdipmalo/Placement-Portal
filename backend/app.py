@@ -19,12 +19,18 @@ jwt = JWTManager()
 
 def create_app():
     app = Flask(__name__)
+
+    app.config.from_object(Config)
+    
     CORS(
         app,
-        resources={r"/api/*": {"origins": [os.getenv("FRONTEND_URL")]}},
+        resources={r"/api/*": {"origins": [
+            "https://placement-portal-nine-fawn.vercel.app"
+        ]}},
+        methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"],
         supports_credentials=True
     )
-    app.config.from_object(Config)
 
 
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
